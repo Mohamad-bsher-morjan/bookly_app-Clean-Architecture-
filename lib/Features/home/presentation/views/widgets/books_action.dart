@@ -1,4 +1,3 @@
-
 import 'package:bookly_app2/core/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 
@@ -10,7 +9,8 @@ class BookAction extends StatelessWidget {
     return Row(
       children: [
         Expanded(
-          child: CustomButton(text: '19.99',
+          child: CustomButton(
+            text: '19.99',
             backgroundColor: Colors.white,
             textColor: Colors.black,
             borderRadius: BorderRadius.only(

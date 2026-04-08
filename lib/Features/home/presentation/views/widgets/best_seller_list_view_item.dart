@@ -71,4 +71,3 @@ class BookListViewItem extends StatelessWidget {
     );
   }
 }
-

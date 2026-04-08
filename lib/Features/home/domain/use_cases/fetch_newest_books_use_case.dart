@@ -14,6 +14,3 @@ class FetchNewestBooksUseCase extends UseCase<List<BookEntity>, NoParam> {
     return await homeRepo.fetchNewestBooks();
   }
 }
-
-
-
