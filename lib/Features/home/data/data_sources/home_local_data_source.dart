@@ -1,5 +1,6 @@
 import 'package:bookly_app2/Features/home/domain/entities/book_entity.dart';
-
+import 'package:bookly_app2/constants.dart';
+import 'package:hive/hive.dart';
 abstract class HomeLocalDataSource {
   List<BookEntity> fetchFeaturedBooks();
   List<BookEntity> fetchNewestBooks();
