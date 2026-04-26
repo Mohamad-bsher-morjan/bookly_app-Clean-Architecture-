@@ -1,5 +1,5 @@
 import 'package:bookly_app2/Features/home/data/data_sources/home_local_data_source.dart';
-import 'package:bookly_app2/Features/home/data/data_sources/home_remote_source.dart';
+import 'package:bookly_app2/Features/home/data/data_sources/home_remote_data_source.dart';
 import 'package:bookly_app2/Features/home/domain/entities/book_entity.dart';
 import 'package:bookly_app2/Features/home/domain/repos/home_repo.dart';
 import 'package:bookly_app2/core/errors/failure.dart';
@@ -19,11 +19,11 @@ class HomeRepoImpl extends HomeRepo {
     try {
       List<BookEntity> books;
       books = homeLocalDataSource.fetchFeaturedBooks();
-      if (books.isEmpty) {
+      if (books.isNotEmpty) {
         return right(books);
       }
       books = await homeRemoteDataSource.fetchFeaturedBooks();
-
+      homeLocalDataSource.cacheFeaturedBooks(books);
       return right(books);
     } catch (e) {
       if (e is DioException) {
@@ -38,11 +38,11 @@ class HomeRepoImpl extends HomeRepo {
     try {
       List<BookEntity> books;
       books = homeLocalDataSource.fetchNewestBooks();
-      if (books.isEmpty) {
+      if (books.isNotEmpty) {
         return right(books);
       }
       books = await homeRemoteDataSource.fetchNewestBooks();
-
+      homeLocalDataSource.cacheNewestBooks(books);
       return right(books);
     } catch (e) {
       if (e is DioException) {

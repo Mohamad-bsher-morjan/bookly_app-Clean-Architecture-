@@ -50,13 +50,17 @@ class ServerFailure extends Failure {
       return ServerFailure(
         errMessage: 'Your request not found, please try later',
       );
+    } else if (statusCode == 429) {
+      return ServerFailure(
+        errMessage: 'Too many requests, please wait and try again',
+      );
     } else if (statusCode == 500) {
       return ServerFailure(
         errMessage: 'Internal Server error , please try later ',
       );
     } else {
       return ServerFailure(
-        errMessage: 'Opps, There was an Error , please try again',
+        errMessage: 'Opps, There was an Error , please try again (code: $statusCode)',
       );
     }
   }

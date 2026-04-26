@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
           create: (context) {
             return FeaturedBooksCubit(
               FetchFeaturedBooksUseCase(getIt.get<HomeRepoImpl>()),
-            );
+            )..fetchFeaturedBooks();
           },
         ),
         BlocProvider(
