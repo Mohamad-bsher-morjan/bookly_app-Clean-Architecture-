@@ -13,6 +13,7 @@ class CustomBookImage extends StatelessWidget {
         child: Image.network(
           image,
           fit: BoxFit.fill,
+
           loadingBuilder: (context, child, loadingProgress) {
             if (loadingProgress == null) return child;
             return const Center(child: CircularProgressIndicator());
