@@ -3,7 +3,7 @@ import 'package:hive/hive.dart';
 part 'book_entity.g.dart';
 
 @HiveType(typeId: 0)
-class BookEntity extends HiveObject { 
+class BookEntity extends HiveObject {
   @HiveField(0)
   final String bookId;
 
@@ -22,6 +22,9 @@ class BookEntity extends HiveObject {
   @HiveField(5)
   final num? rating;
 
+  @HiveField(6)
+  final String category;
+
   BookEntity({
     required this.bookId,
     required this.image,
@@ -29,5 +32,6 @@ class BookEntity extends HiveObject {
     required this.authorName,
     required this.price,
     required this.rating,
+    required this.category,
   });
 }

@@ -1,4 +1,4 @@
-import 'package:bookly_app2/Features/home/presentation/views/widgets/similar_books_list_view.dart';
+import 'package:bookly_app2/Features/home/presentation/views/widgets/similar_books_list_view_bloc_builder.dart';
 import 'package:bookly_app2/core/utils/styles.dart';
 import 'package:flutter/material.dart';
 
@@ -15,7 +15,7 @@ class SimilarBooksSection extends StatelessWidget {
           style: Styles.textStyle14.copyWith(fontWeight: FontWeight.bold),
         ),
         SizedBox(height: 7),
-        SimilarBooksListView(),
+        const SimilarBooksListViewBlocBuilder(),
       ],
     );
   }

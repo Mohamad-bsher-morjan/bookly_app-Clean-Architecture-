@@ -24,7 +24,9 @@ class HomeRepoImpl extends HomeRepo {
       if (books.isNotEmpty) {
         return right(books);
       }
-      books = await homeRemoteDataSource.fetchFeaturedBooks(pageNumber: pageNumber);
+      books = await homeRemoteDataSource.fetchFeaturedBooks(
+        pageNumber: pageNumber,
+      );
       return right(books);
     } catch (e) {
       if (e is DioException) {
@@ -43,6 +45,23 @@ class HomeRepoImpl extends HomeRepo {
         return right(books);
       }
       books = await homeRemoteDataSource.fetchNewestBooks();
+      return right(books);
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.formDioException(e));
+      }
+      return left(ServerFailure(errMessage: e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<BookEntity>>> fetchSimilarBooks({
+    required String category,
+  }) async {
+    try {
+      final books = await homeRemoteDataSource.fetchSimilarBooks(
+        category: category,
+      );
       return right(books);
     } catch (e) {
       if (e is DioException) {

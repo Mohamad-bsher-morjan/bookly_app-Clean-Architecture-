@@ -10,17 +10,19 @@ class CustomBookImage extends StatelessWidget {
       aspectRatio: 2.7 / 4,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(16),
-        child: Image.network(
-          image,
-          fit: BoxFit.fill,
+        child: image.isEmpty
+            ? const Center(child: Icon(Icons.broken_image))
+            : Image.network(
+                image,
+                fit: BoxFit.fill,
 
-          loadingBuilder: (context, child, loadingProgress) {
-            if (loadingProgress == null) return child;
-            return const Center(child: CircularProgressIndicator());
-          },
-          errorBuilder: (context, error, stackTrace) =>
-              const Center(child: Icon(Icons.broken_image)),
-        ),
+                loadingBuilder: (context, child, loadingProgress) {
+                  if (loadingProgress == null) return child;
+                  return const Center(child: CircularProgressIndicator());
+                },
+                errorBuilder: (context, error, stackTrace) =>
+                    const Center(child: Icon(Icons.broken_image)),
+              ),
       ),
     );
   }
