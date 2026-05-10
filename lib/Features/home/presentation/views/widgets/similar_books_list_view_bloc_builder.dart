@@ -11,7 +11,7 @@ class SimilarBooksListViewBlocBuilder extends StatelessWidget {
     return BlocBuilder<SimilarBooksCubit, SimilarBooksState>(
       builder: (context, state) {
         if (state is SimilarBooksSuccess) {
-          return SimilarBooksListView(books: state.books,);
+          return SimilarBooksListView(books: state.books);
         } else if (state is SimilarBooksFailure) {
           return Text(state.errMessage);
         } else {
